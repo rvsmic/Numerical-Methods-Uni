@@ -1,0 +1,65 @@
+/*
+Napisz program implementujący metodę bisekcji. Program przetestuj dla następujących funkcji:
+f (x) = x2 − 4, x ∈ [0, 2.2],
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+float f1(float x) {
+    return x*x - 4;
+}
+
+float f2(float x) {
+    return sin(x) - 0.5;
+}
+
+float bisection(float (*f)(float), float a, float b, float epsilon) {
+    float fa = f(a);
+    float fb = f(b);
+    if(fa == 0) return a;
+    if(fb == 0) return b;
+    if(fa*fb > 0) {
+        printf("Brak zmiany znaku\n");
+        return 0;
+    }
+    float c;
+    int iteration_counter = 0;
+    while(fabs(b-a) >= epsilon) {
+        c = (a+b)/2;
+        float fc = f(c);
+        if(fa*fc < 0) {
+            b = c;
+            fb = fc;
+        } else {
+            a = c;
+            fa = fc;
+        }
+        iteration_counter++;
+    }
+    printf("Liczba iteracji: %d\n", iteration_counter);
+    return c;
+}
+
+int main() {
+    float a1 = 0;
+    float b1 = 2.2;
+    float a2 = 0;
+    float b2 = 2.2;
+    float epsilon = pow(10, -6);
+    printf("-----------------\n");
+    printf("Metoda bisekcji dla epsilon = %f\n", epsilon);
+    printf("-----------------\n");
+    printf("Funkcja f1(x) = x^2 - 4\n");
+    float result1 = bisection(f1, a1, b1, epsilon);
+    printf("x = %f\n", result1);
+    printf("f1(x) = %f\n", f1(result1));
+    printf("-----------------\n");
+    printf("Funkcja f2(x) = sin(x) - 0.5\n");
+    float result2 = bisection(f2, a2, b2, epsilon);
+    printf("x = %f\n", result2);
+    printf("f2(x) = %f\n", f2(result2));
+    printf("-----------------\n");
+    return 0;
+}
