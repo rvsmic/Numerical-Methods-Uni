@@ -13,6 +13,8 @@
 - [Macierz odwrotna Laplace'a](Lab-3/zad-3.c)
 - [Rozwiązywanie układów równań liniowych macierzami](Lab-4/zad-1a.c)
 - [Rozkład LU macierzy](Lab-4/zad-1b.c)
+- [Metoda Jacobiego](Lab-5/zad-1.c)
+- [Metoda Gaussa-Siedla](Lab-5/zad-2.c)
 - [Metoda bisekcji](Lab-6/zad-1.c)
 - [Metoda Newtona](Lab-6/zad-2.c)
 - [Metoda siecznych](Lab-6/zad-3.c)
